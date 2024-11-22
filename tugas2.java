@@ -1,14 +1,27 @@
+import java.util.Scanner;
+
 public class tugas2 {
 
-    static int[][] penjualan = {
-        {20, 20, 25, 20, 20, 30, 60}, 
-        {30, 80, 40, 10, 15, 10, 10},
-        {5, 9, 20, 20, 15, 45, 45},   
-        {50, 8, 17, 15, 18, 20, 25},  
-        {15, 16, 16, 16, 16, 10, 55}  
-    };
-
+    static int[][] penjualan;
     static String[] menu = {"Kopi", "Teh", "Es Degan", "Roti Bakar", "Gorengan"};
+
+    public static void inputPenjualan() {
+        Scanner scanner = new Scanner(System.in);
+        penjualan = new int[menu.length][7]; 
+
+        System.out.println("========================");
+        System.out.println("Masukkan data penjualan:");
+        System.out.println("========================");
+
+        for (int i = 0; i < menu.length; i++) {
+            System.out.println("Penjualan untuk " + menu[i] + ":");
+            for (int j = 0; j < 7; j++) {
+                System.out.print("Hari ke-" + (j + 1) + ": ");
+                penjualan[i][j] = scanner.nextInt();
+            }
+        }
+        System.out.println("========================");
+    }
 
     public static void tampilkanPenjualan() {
         System.out.println("========================");
@@ -58,8 +71,10 @@ public class tugas2 {
     }
 
     public static void main(String[] args) {
+        inputPenjualan(); 
+
         tampilkanPenjualan();
-        
+
         tampilkanMenuTertinggi();
 
         tampilkanRataRataPenjualan();
